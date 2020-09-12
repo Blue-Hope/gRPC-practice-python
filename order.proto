@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package order;
+
+service OrderService {
+ rpc createOrder(CreateOrderRequest) returns (CreateOrderReply) {}
+}
+
+message CreateOrderRequest {
+ int64 restaurantId = 1;
+ int64 consumerId = 2;
+ repeated LineItem lineItems = 3;
+}
+
+message LineItem {
+ int64 menuItemId = 1;
+ int32 quantity = 2;
+}
+
+message CreateOrderReply {
+ string restaurantName = 1;
+ string consumerName = 2;
+ int64 price = 3;
+}
